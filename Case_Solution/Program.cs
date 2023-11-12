@@ -32,6 +32,9 @@ namespace Case_Solution
 
 
             string[][] rate = ds.Res(gender, battlepass, rase, clas, weapon, armor);
+
+            
+
             int[] llvl = new int[] { };
             for (int i = 0; i<=99; i++)
             {
@@ -41,25 +44,31 @@ namespace Case_Solution
             Array.Reverse(llvl);
 
             
-            for (int i = 0; i <= 99; i++)
-            {
-                for (int fst = 0; fst <= 99; fst++)
+            for (int i = 0; i <= 3; i++)
+            { int fst = 0;
+                while (fst <= 99)
                 {
                     if (llvl[i] == Convert.ToInt32(rate[fst][6]))
                     {
                         res = res.Append(rate[fst]).ToArray();
+                        fst++;
+                    }
+                    else
+                    {
+                        fst++;
                     }
                 }
             }
 
-            Console.WriteLine("РЕЙТИНГ ИГРОКОВ");
+            Console.WriteLine("ТОП-3 РЕЙТИНГ ИГРОКОВ");
             Console.WriteLine("1. Пол 2. Наличие боевого пропуска 3. Раса 4. Класс персонажа 5. Любимое оружие 6. Любимая броня 7. Уровень");
             Console.WriteLine();
-            for (int i = 0; i <= 99; i++)
+            for (int i = 0; i <= 2; i++)
             {
                 Console.WriteLine("1. " + res[i][0] + " 2. " + res[i][1] + " 3. " + res[i][2] + " 4. " + res[i][3] + " 5. " + res[i][4] + " 6. " + res[i][5] + " 7. " + res[i][6]);
                 Console.WriteLine();
             }
+            Console.WriteLine("************************************************************************************************");
 
 
             for (int i = 0; i <= 99; i++)
@@ -104,7 +113,7 @@ namespace Case_Solution
             
             while (exit == true)
             {
-                Console.WriteLine("Выберите критерий для оценивания трех лучших игроков и введите его: \nПол, Наличие боевого пропуска, Раса, Класс персонажа, Любимое оружие, Любимая броня\nДля завершения программы введите слово Выход");
+                Console.WriteLine("Выберите критерий для оценивания лучших игроков и введите его: \nПол, Наличие боевого пропуска, Раса, Класс персонажа, Любимое оружие, Любимая броня\nДля завершения программы введите слово Выход");
                 string input = Convert.ToString(Console.ReadLine());
 
                 switch (input)
@@ -115,7 +124,7 @@ namespace Case_Solution
                         if (inp1 == "Мужской" || inp1 == "мужской")
                         {
                             int count = 0;
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
                                 
                                 if (res[i][0] == "Мужской")
@@ -138,7 +147,7 @@ namespace Case_Solution
                         if (inp1 == "Женский" || inp1 == "женский")
                         {
                             int count = 0;
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
                                
                                 if (res[i][0] == "Женский")
@@ -162,7 +171,7 @@ namespace Case_Solution
                         if (inp1 == "Не указан" || inp1 == "не указан")
                         {
                             Array.Clear(empty2, 0, empty2.Length);
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
                                 int count = 0;
                                 if (res[i][0] == "Не указан")
@@ -190,7 +199,7 @@ namespace Case_Solution
                         if (inp2 == "Да" || inp2 == "да")
                         {
                             int count = 0;
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
                                 if (res[i][1] == "Боевой пропуск")
                                 {
@@ -212,7 +221,7 @@ namespace Case_Solution
                         if (inp2 == "Нет" || inp2 == "нет")
                         {
                             int count = 0;
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
                                 if (res[i][1] == "Без боевого пропуска")
                                 {
@@ -239,7 +248,7 @@ namespace Case_Solution
                         if (inp3 == "Человек" || inp3 == "человек")
                         {
                             int count = 0;
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
                                 if (res[i][2] == "Человек")
                                 {
@@ -261,7 +270,7 @@ namespace Case_Solution
                         if (inp3 == "Фея" || inp3 == "фея")
                         {
                             int count = 0;
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
 
                                 if (res[i][2] == "Фея")
@@ -286,7 +295,7 @@ namespace Case_Solution
                         {
                             int count = 0;
                             Array.Clear(empty2, 0, empty2.Length);
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
 
                                 if (res[i][2] == "Эльф")
@@ -309,7 +318,7 @@ namespace Case_Solution
                         if (inp3 == "Оборотень" || inp3 == "оборотень")
                         {
 
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
                                 int count = 0;
                                 if (res[i][2] == "Оборотень")
@@ -332,7 +341,7 @@ namespace Case_Solution
                         if (inp3 == "Вампир" || inp3 == "вампир")
                         {
                             int count = 0;
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
 
                                 if (res[i][2] == "Вампир")
@@ -346,7 +355,7 @@ namespace Case_Solution
                         if (inp3 == "Рептилоид" || inp3 == "рептилоид")
                         {
                             Array.Clear(empty2, 0, empty2.Length);
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
 
                                 if (res[i][2] == "Рептилоид")
@@ -364,7 +373,7 @@ namespace Case_Solution
                         if (inp4 == "Маг" || inp4 == "маг")
                         {
 
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
                                 if (res[i][3] == "Маг")
                                 {
@@ -376,7 +385,7 @@ namespace Case_Solution
                         if (inp4 == "Вор" || inp4 == "вор")
                         {
 
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
 
                                 if (res[i][3] == "Вор")
@@ -390,7 +399,7 @@ namespace Case_Solution
                         if (inp4 == "Воин" || inp4 == "воин")
                         {
                             Array.Clear(empty2, 0, empty2.Length);
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
 
                                 if (res[i][3] == "Воин")
@@ -403,7 +412,7 @@ namespace Case_Solution
                         if (inp4 == "Лучник" || inp4 == "лучник")
                         {
 
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
                                 if (res[i][3] == "Лучник")
                                 {
@@ -415,7 +424,7 @@ namespace Case_Solution
                         if (inp4 == "Иллюминат" || inp4 == "иллюминат")
                         {
 
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
 
                                 if (res[i][3] == "Иллюминат")
@@ -434,7 +443,7 @@ namespace Case_Solution
                         if (inp5 == "Меч двуручный" || inp5 == "меч двуручный")
                         {
 
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
                                 if (res[i][4] == "Меч двуручный")
                                 {
@@ -446,7 +455,7 @@ namespace Case_Solution
                         if (inp5 == "Меч одноручный" || inp5 == "меч одноручный")
                         {
 
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
 
                                 if (res[i][4] == "Меч одноручный")
@@ -460,7 +469,7 @@ namespace Case_Solution
                         if (inp5 == "Лук" || inp5 == "лук")
                         {
                             Array.Clear(empty2, 0, empty2.Length);
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
 
                                 if (res[i][4] == "Лук")
@@ -473,7 +482,7 @@ namespace Case_Solution
                         if (inp5 == "Копьё" || inp5 == "копьё")
                         {
 
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
                                 if (res[i][4] == "Копьё")
                                 {
@@ -485,7 +494,7 @@ namespace Case_Solution
                         if (inp5 == "Волшебная палочка" || inp5 == "волшебная палочка")
                         {
 
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length-1; i++)
                             {
 
                                 if (res[i][4] == "Волшебная палочка")
@@ -499,7 +508,7 @@ namespace Case_Solution
                         if (inp5 == "Посох" || inp5 == "посох")
                         {
                             Array.Clear(empty2, 0, empty2.Length);
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
 
                                 if (res[i][4] == "Посох")
@@ -512,7 +521,7 @@ namespace Case_Solution
                         if (inp5 == "Чайник" || inp5 == "чайник")
                         {
                             Array.Clear(empty2, 0, empty2.Length);
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
 
                                 if (res[i][4] == "Чайник")
@@ -530,7 +539,7 @@ namespace Case_Solution
                         if (inp6 == "Доспехи" || inp6 == "доспехи")
                         {
 
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
                                 if (res[i][5] == "Доспехи")
                                 {
@@ -542,7 +551,7 @@ namespace Case_Solution
                         if (inp6 == "Кожанная броня" || inp6 == "кожанная броня")
                         {
 
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
 
                                 if (res[i][5] == "Кожанная броня")
@@ -556,7 +565,7 @@ namespace Case_Solution
                         if (inp6 == "Мантия" || inp6 == "мантия")
                         {
                             Array.Clear(empty2, 0, empty2.Length);
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
 
                                 if (res[i][5] == "Мантия")
@@ -569,7 +578,7 @@ namespace Case_Solution
                         if (inp6 == "Кольчуга" || inp6 == "кольчуга")
                         {
 
-                            for (int i = 0; i <= 100; i++)
+                            for (int i = 0; i <= res.Length - 1; i++)
                             {
                                 if (res[i][5] == "Кольчуга")
                                 {
